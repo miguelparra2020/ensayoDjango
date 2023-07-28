@@ -7,9 +7,9 @@ pip install -r requirements.txt
 python manage.py collectstatic --no-input
 python manage.py migrate
 
-echo "Ingresa la contraseña para el superusuario:"
-read -s password
+# Utilizar la variable de entorno para obtener la contraseña del superusuario
+SUPERUSER_PASSWORD="$MI_SUPERUSER_PASSWORD"
 
-# Crear un superusuario
+# Crear el superusuario con la contraseña proporcionada desde la variable de entorno
 python manage.py createsuperuser --username Miguel --email mi_correo@example.com --noinput
-echo "$password" | python manage.py shell -c "from django.contrib.auth.models import User; user = User.objects.get(username='mi_usuario'); user.set_password('$password'); user.save()"
+python manage.py changepassword Miguel "$SUPERUSER_PASSWORD"
