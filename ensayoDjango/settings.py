@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 
 import os
-
+import dj_database_url
 
 from pathlib import Path
 
@@ -87,18 +87,14 @@ WSGI_APPLICATION = 'ensayoDjango.wsgi.application'
 
 
 
-DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': os.environ.get('DB_NAME'),
-    'HOST': os.environ.get('DB_HOST'),
-    'PORT': os.environ.get('DB_PORT'),
-    'USER': os.environ.get('DB_USER'),
-    'PASSWORD': os.environ.get('DB_PASSWORD'),
-    'OPTIONS': {'ssl': {'ca': os.environ.get('MYSQL_ATTR_SSL_CA')}}
-  }
-}
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+DATABASES = {
+    'default': dj_database_url.config(        # Feel free to alter this value to suit your needs.        
+        default='sqlite:///db.sqlite3',        
+        conn_max_age=600    
+    )}
 
 
 
