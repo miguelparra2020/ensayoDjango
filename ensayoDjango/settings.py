@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'ensayoDjango.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='sqlite:///db.slite3',
+        default='postgres://exampledb_qpud_user:j9tENAPqrYFleMb9UQ9wf4v1S8l7XdX9@dpg-cj1k32d9aq02d7l5c2o0-a/exampledb_qpud',
         conn_max_age=600
     )
 }
