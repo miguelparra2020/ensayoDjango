@@ -85,13 +85,20 @@ WSGI_APPLICATION = 'ensayoDjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='postgres://exampledb_qpud_user:j9tENAPqrYFleMb9UQ9wf4v1S8l7XdX9@dpg-cj1k32d9aq02d7l5c2o0-a/exampledb_qpud',
-        conn_max_age=600
-    )
+  'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': os.environ.get('db-ensayo'),
+    'HOST': os.environ.get('aws.connect.psdb.cloud'),
+    'PORT': os.environ.get('3306'),
+    'USER': os.environ.get('kyqu2hx9thw5bs3h6byb'),
+    'PASSWORD': os.environ.get('pscale_pw_wap9OM6fN4aLuCNuulgJ4IEPWRzVc9FneGNdxdBwYGJ'),
+    'OPTIONS': {'ssl': {'ca': os.environ.get('/etc/ssl/certs/ca-certificates.crt')}}
+  }
 }
+
 
 
 
